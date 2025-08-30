@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bùi Văn Bình - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>Bùi Văn Bình</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Dự án</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Kỹ năng</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Liên hệ</a>
+                </li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Xin chào, tôi là <span class="highlight">Bùi Văn Bình</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Frontend Developer & Digital Communication Engineer
+                </p>
+                <p class="hero-description">
+                    Sinh viên năm 4 tại HUST, đam mê phát triển web và sáng tạo giao diện người dùng. 
+                    Tôi kết hợp thiết kế và code để xây dựng những website trực quan, thân thiện với người dùng.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Xem dự án</a>
+                    <a href="#contact" class="btn btn-secondary">Liên hệ</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img src="anh_CV.jpg" alt="Bùi Văn Bình" class="avatar-image">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Bùi Văn Bình</h3>
+                        <p>Frontend Developer</p>
+                        <div class="social-links">
+                            <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:buivanbinh1310@gmail.com">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="tel:0329054205">
+                                <i class="fas fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Về tôi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Giới thiệu</h3>
+                    <p>
+                        Tôi là sinh viên năm 4 tại Đại học Bách khoa Hà Nội (HUST), chuyên ngành 
+                        Digital Communication & Multimedia Engineering - Chương trình tiên tiến. 
+                        Với niềm đam mê phát triển web và tư duy sáng tạo, tôi kết hợp thiết kế và code 
+                        để xây dựng những website trực quan, thân thiện với người dùng.
+                    </p>
+                    <p>
+                        Tôi mong muốn đóng góp vào các dự án thực tế nơi tôi có thể phát triển 
+                        thông qua sự hợp tác và học hỏi liên tục.
+                    </p>
+                </div>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h4>Học vấn</h4>
+                            <p>Đại học Bách khoa Hà Nội (HUST)</p>
+                            <p>Digital Communication & Multimedia Engineering</p>
+                            <p>Dự kiến tốt nghiệp: 2026</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Địa chỉ</h4>
+                            <p>Xã Đàn - Đống Đa - Hà Nội</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>buivanbinh1310@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Dự án</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Monderat Music Player Web</h3>
+                        <p>Ứng dụng web phát nhạc responsive với giao diện tùy chỉnh, cho phép người dùng phát, tạm dừng và chuyển bài hát.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap 4</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://moderat-website.vercel.app/" target="_blank" class="btn btn-small">Live Demo</a>
+                            <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4/Moderat-Website" target="_blank" class="btn btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Game Online Website</h3>
+                        <p>Nền tảng game trực tuyến trên trình duyệt cho phép người dùng chơi game casual trực tiếp trên website. Thiết kế để khám phá tương tác thời gian thực và tích hợp backend cơ bản.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Node.js</span>
+                            <span>Express</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4/Wesite_Game_online" target="_blank" class="btn btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hệ thống quản lý hồ sơ pháp lý Blockchain</h3>
+                        <p>Hệ thống quản lý tài liệu pháp lý số được thiết kế để đảm bảo tính minh bạch, bảo mật và toàn vẹn bằng cách tích hợp công nghệ blockchain.</p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>ASP.NET Core</span>
+                            <span>SQL Server</span>
+                            <span>Blockchain</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4/He_Thong_Ho_So_Phap_Ly_Blockchain" target="_blank" class="btn btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI-powered IELTS Learning Platform</h3>
+                        <p>Ứng dụng web tương tác giúp người dùng luyện tập IELTS Speaking bằng cách cung cấp giao diện sạch sẽ để ghi âm, gửi và xem lại câu trả lời với phản hồi AI tức thì.</p>
+                        <div class="project-tech">
+                            <span>React.js</span>
+                            <span>CSS3</span>
+                            <span>Node.js</span>
+                            <span>AI/ML</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4/IELTS" target="_blank" class="btn btn-small btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Kỹ năng</h2>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3>Frontend</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-bootstrap"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Backend</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server"></i>
+                            <span>Express.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Tools & Others</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>C#</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-brain"></i>
+                            <span>AI/ML</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Liên hệ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Thông tin liên hệ</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>buivanbinh1310@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Điện thoại</h4>
+                            <p>0329054205</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Địa chỉ</h4>
+                            <p>Xã Đàn - Đống Đa - Hà Nội</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4" target="_blank">
+                                Chu-vit-Huster-ngao-ngo-2k4
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Gửi tin nhắn</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Họ và tên" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Tiêu đề" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Nội dung tin nhắn" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Bùi Văn Bình. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://github.com/Chu-vit-Huster-ngao-ngo-2k4" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:buivanbinh1310@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
