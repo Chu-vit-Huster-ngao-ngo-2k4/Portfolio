@@ -134,12 +134,18 @@ document.addEventListener('DOMContentLoaded', () => {
     animateElements.forEach(el => observer.observe(el));
 });
 
-// Contact form handling
+// Contact form handling with Formspree
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
+    const form = this;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    const formStatus = document.getElementById('formStatus');
+    
     // Get form data
-    const formData = new FormData(this);
+    const formData = new FormData(form);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
@@ -147,23 +153,62 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     
     // Simple validation
     if (!name || !email || !subject || !message) {
-        alert('Vui lòng điền đầy đủ thông tin!');
+        showFormStatus('Vui lòng điền đầy đủ thông tin!', 'error');
         return;
     }
     
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        alert('Vui lòng nhập email hợp lệ!');
+        showFormStatus('Vui lòng nhập email hợp lệ!', 'error');
         return;
     }
     
-    // Simulate form submission (in real app, you'd send to server)
-    alert(`Cảm ơn bạn ${name}! Tin nhắn của bạn đã được gửi thành công. Tôi sẽ liên hệ lại sớm nhất có thể.`);
+    // Show loading state
+    submitBtn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline-block';
     
-    // Reset form
-    this.reset();
+    // Submit form to Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            showFormStatus('Cảm ơn bạn! Tin nhắn đã được gửi thành công. Tôi sẽ liên hệ lại sớm nhất có thể.', 'success');
+            form.reset();
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showFormStatus('Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email.', 'error');
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.style.display = 'inline-block';
+        btnLoading.style.display = 'none';
+    });
 });
+
+// Function to show form status messages
+function showFormStatus(message, type) {
+    const formStatus = document.getElementById('formStatus');
+    formStatus.textContent = message;
+    formStatus.className = `form-status ${type}`;
+    formStatus.style.display = 'block';
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        formStatus.style.display = 'none';
+    }, 5000);
+}
 
 // Add loading animation to buttons
 document.querySelectorAll('.btn').forEach(button => {

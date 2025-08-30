@@ -45,15 +45,25 @@ portfolio/
 - Tạo repository mới trên GitHub
 - Upload code lên repository
 
-### Bước 2: Deploy lên Vercel
+### Bước 2: Setup Formspree (Form liên hệ)
+1. Truy cập [formspree.io](https://formspree.io)
+2. Đăng ký tài khoản miễn phí
+3. Tạo form mới
+4. Copy Form ID (dạng: `xrgjqkzw`)
+5. Thay thế `YOUR_FORM_ID` trong `index.html`:
+   ```html
+   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   ```
+
+### Bước 3: Deploy lên Vercel
 1. Truy cập [vercel.com](https://vercel.com)
 2. Đăng nhập bằng GitHub
 3. Click "New Project"
 4. Import repository từ GitHub
 5. Vercel sẽ tự động detect và deploy
-6. Website sẽ có URL dạng: `https://your-project.vercel.app`
+6. Website sẽ có URL: `https://your-project.vercel.app`
 
-### Bước 3: Custom Domain (tùy chọn)
+### Bước 4: Custom Domain (tùy chọn)
 1. Trong Vercel dashboard, vào project settings
 2. Chọn "Domains"
 3. Thêm domain tùy chỉnh của bạn
