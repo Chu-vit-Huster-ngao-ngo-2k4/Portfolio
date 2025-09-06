@@ -436,29 +436,73 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form fade-in-right">
-                    <h3 data-lang-key="contact-form-title">Gửi tin nhắn</h3>
-                    <form id="contactForm" action="https://formspree.io/f/xnnbprll" method="POST">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Họ và tên" required>
+                <div class="chatbox-container fade-in-right">
+                    <div class="chatbox-header">
+                        <div class="chatbox-avatar">
+                            <img src="anh_CV.jpg" alt="Bùi Văn Bình" class="chat-avatar">
+                            <div class="online-indicator"></div>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        <div class="chatbox-info">
+                            <h3 data-lang-key="chat-title">Bùi Văn Bình</h3>
+                            <div class="chat-status">
+                                <div class="status-dot"></div>
+                                <span data-lang-key="chat-status">Đang hoạt động</span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Tiêu đề" required>
+                        <div class="chatbox-controls">
+                            <button class="chat-control-btn minimize" data-lang-key="chat-minimize">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button class="chat-control-btn close" data-lang-key="chat-close">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Nội dung tin nhắn" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="chatbox-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <img src="anh_CV.jpg" alt="Bùi Văn Bình">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-bubble">
+                                    <p data-lang-key="chat-welcome">Xin chào! 👋 Tôi là Bùi Văn Bình. Bạn có thể gửi tin nhắn cho tôi qua form bên dưới nhé!</p>
+                                </div>
+                                <div class="message-time">
+                                    <span data-lang-key="chat-now">Vừa xong</span>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span class="btn-text" data-lang-key="form-submit">Gửi tin nhắn</span>
-                            <span class="btn-loading" style="display: none;">
-                                <i class="fas fa-spinner fa-spin"></i> <span data-lang-key="form-sending">Đang gửi...</span>
-                            </span>
-                        </button>
-                    </form>
-                    <div class="form-status" id="formStatus" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="chatbox-form">
+                        <form id="contactForm" action="https://formspree.io/f/xnnbprll" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="name" name="name" placeholder="Tên của bạn" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" placeholder="Chủ đề" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Nhập tin nhắn của bạn..." rows="3" required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary chat-send-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span class="btn-text" data-lang-key="form-submit">Gửi tin nhắn</span>
+                                    <span class="btn-loading" style="display: none;">
+                                        <i class="fas fa-spinner fa-spin"></i> <span data-lang-key="form-sending">Đang gửi...</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                        <div class="form-status" id="formStatus" style="display: none;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -482,5 +526,21 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <!--Start of Tawk.to Script-->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68bc45bf81471d1920dff545/1j4fn0t5b';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <!--End of Tawk.to Script-->
 </body>
 </html> 

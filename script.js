@@ -47,6 +47,12 @@ class LanguageManager {
                 'contact-phone': 'Điện thoại',
                 'contact-github': 'GitHub',
                 'contact-form-title': 'Gửi tin nhắn',
+                'chat-title': 'Bùi Văn Bình',
+                'chat-status': 'Đang hoạt động',
+                'chat-minimize': '_',
+                'chat-close': '×',
+                'chat-welcome': 'Xin chào! 👋 Tôi là Bùi Văn Bình. Bạn có thể gửi tin nhắn cho tôi qua form bên dưới nhé!',
+                'chat-now': 'Vừa xong',
                 'form-name': 'Họ và tên',
                 'form-email': 'Email',
                 'form-subject': 'Tiêu đề',
@@ -102,6 +108,12 @@ class LanguageManager {
                 'contact-phone': 'Phone',
                 'contact-github': 'GitHub',
                 'contact-form-title': 'Send Message',
+                'chat-title': 'Bùi Văn Bình',
+                'chat-status': 'Online',
+                'chat-minimize': '_',
+                'chat-close': '×',
+                'chat-welcome': 'Hello! 👋 I am Bùi Văn Bình. You can send me a message using the form below!',
+                'chat-now': 'Just now',
                 'form-name': 'Full Name',
                 'form-email': 'Email',
                 'form-subject': 'Subject',
@@ -407,6 +419,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Initialize scroll animations
         initializeScrollAnimations();
+        
+        // Initialize chatbox
+        initializeChatbox();
     }, 100);
 });
 
@@ -997,6 +1012,169 @@ function showFormSuccess(form) {
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
 });
+
+// Initialize Chatbox
+function initializeChatbox() {
+    const chatboxContainer = document.querySelector('.chatbox-container');
+    const minimizeBtn = document.querySelector('.chat-control-btn.minimize');
+    const closeBtn = document.querySelector('.chat-control-btn.close');
+    const chatMessages = document.getElementById('chatMessages');
+    const contactForm = document.getElementById('contactForm');
+    
+    if (!chatboxContainer) return;
+    
+    // Minimize functionality
+    if (minimizeBtn) {
+        minimizeBtn.addEventListener('click', () => {
+            chatboxContainer.classList.toggle('minimized');
+            const isMinimized = chatboxContainer.classList.contains('minimized');
+            minimizeBtn.innerHTML = isMinimized ? '<i class="fas fa-plus"></i>' : '<i class="fas fa-minus"></i>';
+        });
+    }
+    
+    // Close functionality
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            chatboxContainer.style.display = 'none';
+        });
+    }
+    
+    // Auto-scroll to bottom when new messages are added
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Add typing indicator
+    function addTypingIndicator() {
+        const typingMessage = document.createElement('div');
+        typingMessage.className = 'message bot-message typing-indicator';
+        typingMessage.innerHTML = `
+            <div class="message-avatar">
+                <img src="anh_CV.jpg" alt="Bùi Văn Bình">
+            </div>
+            <div class="message-content">
+                <div class="message-bubble">
+                    <p>Đang nhập...</p>
+                </div>
+            </div>
+        `;
+        chatMessages.appendChild(typingMessage);
+        scrollToBottom();
+        return typingMessage;
+    }
+    
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const typingIndicator = document.querySelector('.typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+    
+    // Add bot response
+    function addBotResponse(message) {
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot-message';
+        botMessage.innerHTML = `
+            <div class="message-avatar">
+                <img src="anh_CV.jpg" alt="Bùi Văn Bình">
+            </div>
+            <div class="message-content">
+                <div class="message-bubble">
+                    <p>${message}</p>
+                </div>
+                <div class="message-time">
+                    <span>Vừa xong</span>
+                </div>
+            </div>
+        `;
+        chatMessages.appendChild(botMessage);
+        scrollToBottom();
+    }
+    
+    // Enhanced form submission with chat-like feedback
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const message = formData.get('message');
+            
+            // Add user message to chat
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = `
+                <div class="message-content">
+                    <div class="message-bubble user-bubble">
+                        <p><strong>${name}:</strong> ${message}</p>
+                    </div>
+                    <div class="message-time">
+                        <span>Vừa xong</span>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(userMessage);
+            scrollToBottom();
+            
+            // Add typing indicator
+            const typingIndicator = addTypingIndicator();
+            
+            // Show loading state
+            showFormLoading(contactForm);
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    removeTypingIndicator();
+                    addBotResponse('Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể. 📧');
+                    showFormSuccess(contactForm);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                removeTypingIndicator();
+                addBotResponse('Xin lỗi, có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau! 😅');
+                showFormStatus('error', 'Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.');
+            } finally {
+                hideFormLoading(contactForm);
+            }
+        });
+    }
+    
+    // Add some interactive bot responses
+    const messageInput = contactForm?.querySelector('textarea[name="message"]');
+    if (messageInput) {
+        messageInput.addEventListener('input', () => {
+            const message = messageInput.value.toLowerCase();
+            
+            // Clear previous responses
+            const existingResponses = document.querySelectorAll('.message.bot-message:not(:first-child)');
+            existingResponses.forEach(response => response.remove());
+            
+            // Add contextual responses
+            if (message.includes('xin chào') || message.includes('hello')) {
+                setTimeout(() => addBotResponse('Xin chào! Rất vui được gặp bạn! 👋'), 1000);
+            } else if (message.includes('cảm ơn') || message.includes('thank')) {
+                setTimeout(() => addBotResponse('Không có gì! Tôi rất vui được giúp đỡ bạn! 😊'), 1000);
+            } else if (message.includes('dự án') || message.includes('project')) {
+                setTimeout(() => addBotResponse('Bạn có thể xem các dự án của tôi ở phần Projects phía trên! 🚀'), 1000);
+            } else if (message.includes('kỹ năng') || message.includes('skill')) {
+                setTimeout(() => addBotResponse('Tôi chuyên về Frontend Development với React, JavaScript, HTML/CSS! 💻'), 1000);
+            }
+        });
+    }
+    
+    // Initial scroll to bottom
+    scrollToBottom();
+}
 
 // Export theme manager for external use
 window.themeManager = themeManager; 
